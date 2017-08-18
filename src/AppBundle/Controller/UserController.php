@@ -28,25 +28,53 @@ class UserController extends Controller
     $error = $authenticationUtils->getLastAuthenticationError();
     // ultimo nombre de usuario que se ha intentado identificar
     $lastUsername = $authenticationUtils->getLastUsername();
-     
-    return $this->render('AppBundle:User:login.html.twig', array(
+    
+	
+	 return $this->render('allmedia/index.html.twig', array (
+   
                 'last_username' => $lastUsername,
                 'error' => $error,
             ));
-
-
     }
-	
-	
-	
-	
-    public function indexAction()
+
+    public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $users = $em->getRepository('AppBundle:User')->findAll();
-        return $this->render('user/index.html.twig', array(
-            'users' => $users,
-        ));
+		
+		$a="";
+		 $em = $this->getDoctrine()->getManager();
+		 $dql = "SELECT e FROM AppBundle:MediaKsc e";
+		 $query = $em->createQuery($dql);
+		 
+		 
+		// $allmedia=$em->getRepository('AppBundle:GroupsKsc')->findAll();
+		 
+		
+		 /**
+		  * @var $paginator \Knp\Componemt\Pager\Paginator
+		  */
+		 $paginator  = $this->get('knp_paginator');
+		 $page=$request->query->getInt('page',1)	;
+		 $items_pp=5;
+		 $pagination=$paginator->paginate(
+				 $query,
+				 $page		,
+				 $items_pp
+		);
+		 	
+	 //Llamamos al servicio de autenticacion
+    $authenticationUtils = $this->get('security.authentication_utils');
+    // conseguir el error del login si falla
+    $error = $authenticationUtils->getLastAuthenticationError();
+    // ultimo nombre de usuario que se ha intentado identificar
+    $lastUsername = $authenticationUtils->getLastUsername();
+
+	$em = $this->getDoctrine()->getManager();
+	$users = $em->getRepository('AppBundle:User')->findAll();
+	 return $this->render('allmedia/index.html.twig', array (
+		'users' => $users,
+		'error' => $error,
+		'pagination' => $pagination
+	));
     }
 
     /**

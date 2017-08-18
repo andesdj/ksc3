@@ -33,7 +33,8 @@ app_docs:
 #Login--
 login:
     path:     /login
-    defaults: { _controller: AppBundle:User:login }
+    defaults: { _controller: AppBundle:User:Index }
+    methods:  [GET,POST] 
  
 login_check:
     path: /login_check

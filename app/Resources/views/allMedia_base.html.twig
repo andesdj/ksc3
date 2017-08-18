@@ -13,7 +13,6 @@
     <meta name="description" content="   ">
     <meta name="author" content="   ">
     
-    
 	<!--Bootstrap<!-->
 	<link rel="stylesheet" href="{{ asset('assets/results/bootstrap/css/bootstrap.css') }}">
 	
@@ -31,6 +30,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/results/cubeportfolio/css/cubeportfolio.css') }}">
 
     <!-- HTML5 Shiv + detect touch events -->
+	<script src="{{ asset('assets/results/js/jquery.js') }}"></script>
     <script src="{{ asset('assets/results/js/modernizr.custom.js') }}"></script>
 	<script src="{{ asset('assets/results/js/bootstrap.min.js') }}"></script>
 
@@ -47,7 +47,7 @@
 
 <header id="header" class="container clearfix">
 
-    <a href="index.html" id="logo">
+    <a href="{{ path('app_home') }}" id="logo">
         <img src="{{ asset('assets/results/img/logo.png')}}" alt="Kennedy Space Center" width="220px;">
     </a>
     <nav id="main-nav">
@@ -149,27 +149,34 @@
                     </form>
                     
      </section> <!--End Box search-->
-     
+     {% if app.user %}
+		 <a href="{{ path('logout') }}" id="loginButton">
+		<div id="loginContainer">
+			 <span>Logout</span><em></em>
+			 <div style="clear:none"></div>
+			 <div id="loginBox">                
+			 </div>
+			 </a>
+			 
+		 </div>
+	{%else %}
      <aside class="dropdown-box">
-     
         <!-- Login Starts Here -->
             <div id="loginContainer">
                 <a href="#" id="loginButton"><span>Login</span><em></em></a>
                 <div style="clear:none"></div>
                 <div id="loginBox">                
-                    <form id="loginForm">
+                    <form id="loginForm" action="{{ path('login_check') }}" method="post" >
                         <fieldset id="body">
                             <fieldset>
                                 <label for="email">Email Address</label>
-                                <input type="text" name="email" id="email" />
+                                <input type="text" autocomplete="off" name="_username" id="email"  />
                             </fieldset>
                             <fieldset>
                                 <label for="password">Password</label>
-                                <input type="password" name="password" id="password" />
+                                <input type="password" name="_password" id="password" />
                             </fieldset>
                             <input type="submit" id="login" value="Log in" />
-                            <input type="submit" id="signin" value="Sign in" />
-                            <label for="checkbox"><input type="checkbox" id="checkbox" />Remember me</label>
                         </fieldset>
                         <span><a href="#">Forgot your password?</a></span>
                     </form>
@@ -179,6 +186,9 @@
         
      </aside> 
 
+						
+						{% endif %}
+						
     <header class="page-header" >
     
         <h1 class="page-title" >Astronaut Training Experience</h1>
@@ -363,6 +373,7 @@
 
     <script src="{{ asset('assets/results/js/jquery.touchSwipe.min.js') }}"></script>
     <script src="{{ asset('assets/results/js/custom.js') }}"></script>
+
 
         
         <!-- CUBE PORTFOLIO  -->
