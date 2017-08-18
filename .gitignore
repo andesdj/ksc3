@@ -1,0 +1,5 @@
+/web/files/*
+/app/cache/*
+/app/logs/*
+!app/cache/.gitkeep
+!app/logs/.gitkeep

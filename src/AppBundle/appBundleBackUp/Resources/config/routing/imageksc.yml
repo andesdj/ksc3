@@ -1,0 +1,20 @@
+image_index:
+    path:     /
+    defaults: { _controller: "AppBundle:ImageKsc:index" }
+    methods:  GET
+
+image_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:ImageKsc:show" }
+    methods:  GET
+
+image_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:ImageKsc:new" }
+    methods:  [GET, POST]
+
+image_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:ImageKsc:edit" }
+    methods:  [GET, POST]
+

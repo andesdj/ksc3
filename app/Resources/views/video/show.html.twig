@@ -1,0 +1,65 @@
+{% extends 'show_base.html.twig' %}
+{% block body %}
+	{% if mediaKsc.type=="Img" %}
+		<article class="single-project">  
+			{{ mediaKsc.type }}
+			<header class="page-header" >
+				<h1 class="page-title" ><td>{{ mediaKsc.name }}</h1>
+				<ul class="portfolio-pagination">
+					<li class="prev"><a href="#" class="button medium no-bg"><span class="arrow left">&raquo;</span> Previous</a></li>
+					<li class="next"><a href="#" class="button medium no-bg">Next <span class="arrow">&raquo;</span></a></li>
+				</ul><!-- end .portfolio-pagination -->
+			</header><!-- end .page-header -->
+			<div id="main">
+				<div class="image-gallery-slider">
+					<ul>
+						<li>
+							<a href="{{ asset ("/"~mediaKsc.url) | imagine_filter('ksc_web')}}" class="single-image" title="{{ mediaKsc.description }}" rel="single-image">
+								<img src="{{ asset ("/"~mediaKsc.url) | imagine_filter('ksc_web')}}" alt="Altered">
+							</a>
+						</li>
+					</ul>
+				</div><!-- end .image-gallery-slider -->
+			</div><!-- end #main -->
+			<div id="sidebar">
+				<h4>Overview</h4>
+				<p>{{ mediaKsc.description }}</p>
+				<h5>Size: {{ mediaKsc.size }}</h5>
+				<h4>Technical Information</h4>
+				<ul class="check">
+					<li>Color:   {{ mediaKsc.color }}</li>
+					<li>Format: 	{{ mediaKsc.format }}</li>
+					<li id="res_img">   
+					{% if  mediaKsc.resolution=="1" %} Low Resolution  {%endif %} 
+					{% if  mediaKsc.resolution=="2" %} Medium Resolution  {%endif %} 
+					{% if  mediaKsc.resolution=="3" %} Hight Resolution  {%endif %} 
+					</li>
+					<li>Date Object: {% if mediaKsc.dateObject %}{{ mediaKsc.dateObject|date('Y-m-d') }}{% endif %} </li>
+					<li>Date created:  
+						{% if mediaKsc.dateCreated %}{{ mediaKsc.dateCreated|date('Y-m-d') }}{% endif %}
+					</li>
+				</ul>
+				<p>
+					<a href="{{ asset ("/"~mediaKsc.url) | imagine_filter('ksc_web')}}" download="{{mediaKsc.name}}_WEB" class="button" target="_blank">Download Web Resolution</a><br/><br/>
+					<a href="{{asset ( mediaKsc.url) }}"  download="{{mediaKsc.name}}"  class="button" target="_blank">Download Hi Resolution</a>
+				</p>
+			</div><!-- end #sidebar -->
+		</article><!-- end .single-project -->
+
+	{%endif%}
+
+    <ul>
+        
+        <li>
+			{% if is_granted('ROLE_ADMIN') or is_granted ('ROLE_SUPER_ADMIN') %}
+            <a  class="button" href="{{ path('media_edit', { 'id': mediaKsc.id }) }}">Edit</a>
+			{%endif%}
+        </li>
+<li>
+	
+			<h4>
+            <a href="{{ path('app_home') }}">Back to the list</a>
+			</h4>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,67 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+# En el caso que los usuarios tengan la contrase�a cifrada configuramos los encoders para la entidad en la que est�n los usuarios
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+            cost: 4
+            
+# En providers le indicamos que los usuarios van a salir de la base de datos y el username ser� email
+    providers:
+        our_db_provider:
+            entity:
+                class: AppBundle:User
+                property: email
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+# Configuramos el firewall main para indicarle el provider, la login_path, login_check y el path del logout
+        main:
+            anonymous: ~
+            provider: our_db_provider
+            form_login:
+              login_path: /login
+              check_path: /login_check
+            logout:
+              path: logout
+              target: /
+
+    access_control:
+        #Images Control Access
+        - { path: ^/image/new, roles: [ROLE_ADMIN,ROLE_SUPER_ADMIN]}
+        - { path: ^/image/[0-9]/edit, roles: [ROLE_ADMIN,ROLE_SUPER_ADMIN]}
+        - { path: ^/image/[0-9]/show, roles: [ROLE_SUPER_ADMIN,ROLE_ADMIN,ROLE_USER,ROLE_GUEST,IS_AUTHENTICATED_ANONYMOUSLY]}
+
+        #Videos Control Access
+        - { path: ^/video/new, roles: [ROLE_ADMIN,ROLE_SUPER_ADMIN]}
+        - { path: ^/video/[0-9]/edit, roles: [ROLE_ADMIN,ROLE_SUPER_ADMIN]}
+        - { path: ^/video/[0-9]/show, roles: [ROLE_SUPER_ADMIN,ROLE_ADMIN,ROLE_USER,ROLE_GUEST,IS_AUTHENTICATED_ANONYMOUSLY]}
+
+         #Documents Control Access
+        - { path: ^/docs/new, roles: [ROLE_ADMIN,ROLE_SUPER_ADMIN]}
+        - { path: ^/docs/[0-9]/edit, roles: [ROLE_ADMIN,ROLE_SUPER_ADMIN]}
+        - { path: ^/docs/[0-9]/show, roles: [ROLE_SUPER_ADMIN,ROLE_ADMIN,ROLE_USER,ROLE_GUEST,IS_AUTHENTICATED_ANONYMOUSLY]}
+
+        #Groups Control Access
+        - { path: ^/groups/new, roles: [ROLE_ADMIN,ROLE_SUPER_ADMIN]}
+        - { path: ^/groups/[0-9]/edit, roles: [ROLE_ADMIN,ROLE_SUPER_ADMIN]}
+        - { path: ^/groups/[0-9]/show, roles: [ROLE_SUPER_ADMIN,ROLE_ADMIN,ROLE_USER,ROLE_GUEST,IS_AUTHENTICATED_ANONYMOUSLY]}
+
+         #Galleries Control Access
+        - { path: ^/gallery/new, roles: [ROLE_ADMIN,ROLE_SUPER_ADMIN]}
+        - { path: ^/gallery/[0-9]/edit, roles: [ROLE_ADMIN,ROLE_SUPER_ADMIN]}
+        - { path: ^/gallery/[0-9]/show, roles: [ROLE_SUPER_ADMIN,ROLE_ADMIN,ROLE_USER,ROLE_GUEST,IS_AUTHENTICATED_ANONYMOUSLY]}
+        
+         #User Control Access
+        - { path: ^/user/, roles: [ROLE_ADMIN,ROLE_SUPER_ADMIN]}
+        - { path: ^/user/new, roles: [ROLE_ADMIN,ROLE_SUPER_ADMIN]}
+        - { path: ^/user/[0-9]/edit, roles: [ROLE_ADMIN,ROLE_SUPER_ADMIN]}
+        - { path: ^/user/[0-9]/show,  roles: [ROLE_SUPER_ADMIN,ROLE_ADMIN,ROLE_USER,ROLE_GUEST]}
+                
+        

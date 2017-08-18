@@ -1,0 +1,27 @@
+app_Image:
+    resource: "@AppBundle/Resources/config/routing/imageksc.yml"
+    prefix:   /image
+
+app_video:
+    resource: "@AppBundle/Resources/config/routing/videoksc.yml"
+    prefix:   /video    
+
+app_docs:
+    resource: "@AppBundle/Resources/config/routing/docsksc.yml"
+    prefix:   /docs
+
+app_home:
+    path:     /
+    defaults: { _controller: AppBundle:Default:index }
+#Login--
+login:
+    path:     /login
+    defaults: { _controller: AppBundle:User:login }
+ 
+login_check:
+    path: /login_check
+    
+logout:
+    path: /logout
+
+#MEdia----------

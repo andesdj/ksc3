@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Gallerykscs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Initial</th>
+                <th>Gallery</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for galleryKsc in galleryKscs %}
+            <tr>
+                <td><a href="{{ path('gallery_show', { 'id': galleryKsc.id }) }}">{{ galleryKsc.id }}</a></td>
+                <td>{{ galleryKsc.initial }}</td>
+                <td>{{ galleryKsc.gallery }}</td>
+                <td>{{ galleryKsc.description }}</td>
+                <td>{{ galleryKsc.status }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('gallery_show', { 'id': galleryKsc.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('gallery_edit', { 'id': galleryKsc.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('gallery_new') }}">Create a new galleryKsc</a>
+        </li>
+    </ul>
+{% endblock %}

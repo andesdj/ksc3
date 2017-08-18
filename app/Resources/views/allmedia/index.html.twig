@@ -1,0 +1,70 @@
+{% extends 'allMedia_base.html.twig' %}
+{% block body %}
+	<div class="cbp-item" >
+ {#{ pagination.getTotalItemCount }#}
+</div>
+
+
+	{% for mediaKsc in pagination %}
+	
+	{% if mediaKsc.type=="Document"%}{% set classKSC= mediaKsc.format %}{%else%}{%set classKSC=   mediaKsc.type %}{%endif%}
+	<div class="cbp-item {{classKSC}}">
+		<div class="cbp-caption">
+			<div class="cbp-caption-defaultWrap">
+				<img src="{{ asset ("/"~mediaKsc.url) | imagine_filter('ksc_thumb')}}" alt="">
+			</div>
+			<div class="cbp-caption-activeWrap andes" >
+				<div class="cbp-l-caption-alignCenter">
+					<div class="cbp-l-caption-body">
+						{% if  mediaKsc.type=="images" %}
+						<p>
+						<a href="{{ asset ("/"~mediaKsc.url) | imagine_filter('ksc_web')}}"  onMouseMove="window.status = '';" onMouseOut="window.status = '';" class="cbp-lightbox cbp-l-caption-buttonRight-lightbox" data-title="Dashboard<br>by ">
+						<i class="fa fa-arrows" style="color:#fff;"></i> | View Image larger </a>
+						</p>
+						
+						
+						{% endif %}
+
+						{% if  mediaKsc.type=="videos" %}
+						<p><a href="{{asset (mediaKsc.urlLd)}} "  class="cbp-lightbox cbp-l-caption-buttonRight  " data-title="World Clock Widget<br>by ">
+						<i class="fa fa-play" style="color:#fff;"></i>  | Preview Video</a>
+						</p>
+						{% endif %}
+
+						{% if  mediaKsc.type=="Document" %}
+							{% if  mediaKsc.format!="pdfs" %}
+								<p><a href="{{asset (mediaKsc.urlLd)}}"  download="{{mediaKsc.name}}_KSCFile" class=" cbp-l-caption-buttonLeft" rel="nofollow">
+								<i class="fa fa-arrow-circle-down" style="color:#fff;"></i> | Download Document.</a></p>
+								
+								
+							{% endif %}		
+
+							{% if  mediaKsc.format=="pdfs" %}
+							<p><a href="{{asset (mediaKsc.urlLd)}}"  download="{{mediaKsc.name}}_KSCFile"  class=" cbp-l-caption-buttonLeft" rel="nofollow"><i class="fa fa-arrow-circle-down" style="color:#fff;"></i> | Download PDF</a></p>
+							{% endif %}
+						{% endif %}
+						<p>
+							<a href="{{ path('image_show', { 'id': mediaKsc.id }) }}" class=" cbp-l-caption-buttonLeft" rel="nofollow">
+							<i class="fa fa-eye" style="color:#fff;"></i> | Details</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<a href="#" class=" cbp-l-grid-masonry-projects-title" rel="nofollow"> </a>
+			<div class="cbp-l-grid-masonry-projects-desc"> </div>
+		</div>
+	</div>
+	{% endfor %}
+
+
+				{#{ pagination.getTotalItemCount }#}		
+						<!-- PAGINATION-->
+{% endblock %}
+
+{% block pagination %}
+			<div class="navigation">
+			{{ knp_pagination_render(pagination) }}
+		</div>
+{% endblock %}

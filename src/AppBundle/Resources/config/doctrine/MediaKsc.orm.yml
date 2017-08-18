@@ -1,0 +1,130 @@
+AppBundle\Entity\MediaKsc:
+    type: entity
+    table: media_ksc
+    indexes:
+        FK1_user:
+            columns:
+                - id_user
+        FK2Gallery:
+            columns:
+                - gallery
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+        subhead:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        type:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+        format:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+        size:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+        duration:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+        url:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        urlLd:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: url_LD
+        urlThumb:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: url_thumb
+        tags:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+        description:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+        dateCreated:
+            type: date
+            nullable: false
+            column: date_created
+        dateObject:
+            type: date
+            nullable: false
+            column: date_object
+        color:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+        resolution:
+            type: integer
+            nullable: true
+            unsigned: false
+        externalUrl:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            column: external_url
+        copy:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        state:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            default: '1'
+    manyToOne:
+        idUser:
+            targetEntity: User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_user:
+                    referencedColumnName: id
+            orphanRemoval: false
+        gallery:
+            targetEntity: GalleryKsc
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                gallery:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

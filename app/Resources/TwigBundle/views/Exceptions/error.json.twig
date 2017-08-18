@@ -1,0 +1,16 @@
+{% extends 'error.html.twig' %}
+{% block body %}
+  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+  <p>Ir al sitio <a href="{{ path('homepage') }}"></a>.</p>
+  {% endif %}
+
+  {% if status_code == 403 %}
+  <p class="title">Usuario no autorizado. <a href="{{ path('homepage') }}" class="title"><div class="fancybox-close"></div></a>.</p>
+  {% elseif status_code == 404 %}
+  <p class="title">Página o Archivo no Encontrado. <a href="{{ path('homepage') }}" class="title"><div class="fancybox-close"></div></a>.</p>
+  {% elseif status_code == 500 %}
+  <p class="title">Error Interno del Servidor.<div class="fancybox-close" onclick="window.location = '{{ path('homepage') }}';"></div></p>
+  {% else %}
+  <p class="title">Error Interno del Servidor. <a href="{{ path('homepage') }}" class="title"><div class="fancybox-close"></div></a>.</p>
+  {% endif %}
+{% endblock %}

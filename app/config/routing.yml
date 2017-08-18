@@ -1,0 +1,18 @@
+app_gallery_ksc:
+    resource: "@AppBundle/Controller/GalleryKscController.php"
+    type:     annotation
+
+app_groups_ksc:
+    resource: "@AppBundle/Controller/GroupsKscController.php"
+    type:     annotation
+
+#app:
+#    resource: "@AppBundle/Controller/"
+#    type:     annotation
+
+app:
+    resource: "@AppBundle/Resources/config/routing.yml"
+    prefix: /
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"

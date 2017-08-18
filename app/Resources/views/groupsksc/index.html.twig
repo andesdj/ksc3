@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Groupskscs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Initial</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for groupsKsc in groupsKscs %}
+            <tr>
+                <td><a href="{{ path('groups_show', { 'id': groupsKsc.id }) }}">{{ groupsKsc.id }}</a></td>
+                <td>{{ groupsKsc.name }}</td>
+                <td>{{ groupsKsc.initial }}</td>
+                <td>{{ groupsKsc.description }}</td>
+                <td>{{ groupsKsc.status }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('groups_show', { 'id': groupsKsc.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('groups_edit', { 'id': groupsKsc.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('groups_new') }}">Create a new groupsKsc</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'upload_base.html.twig' %}
+
+{% block body %}
+
+	<div class="content">
+		<!--START FORM -->
+		<div class="form-horizontal">
+			<div class="panel panel-flat">
+				<div class="col-md-6">
+
+					<div class="panel-heading">
+						<h5 class="panel-title">User Creation</h5>
+						<div class="panel-heading">
+
+							<div class="row">
+								{{ form_start(form) }}
+								{{ form_widget(form) }}
+
+								<label class="col-lg-3 control-label">Select a Role:</label>
+
+								<select name="role" class="form-control">
+									<option value="ROLE_ADMIN">Admin</option>
+									<option value="ROLE_USER" selected="selected">User</option>
+									<option value="ROLE_GUEST">Guest</option>
+								</select>
+								<div class="text-right">
+									<input type="submit" value="CREATE"  class="btn btn-primary"/>
+									{{ form_end(form) }}
+								</div>	
+								{{ form_end(form) }}
+								<ul>
+									<li>
+										<a href="{{ path('user_index') }}">Back to the list</a>
+									</li>
+								</ul>
+							</div>	
+						</div>
+					</div>	
+				</div>
+			</div>	
+		</div>	
+	</div>	
+
+
+
+
+
+
+{% endblock %}

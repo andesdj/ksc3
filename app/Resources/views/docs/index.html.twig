@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>MediaKsc list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Subhead</th>
+                <th>Type</th>
+                <th>Format</th>
+                <th>Size</th>
+                <th>Duration</th>
+                <th>Url</th>
+                <th>Urlld</th>
+                <th>Urlthumb</th>
+                <th>Tags</th>
+                <th>Gallery</th>
+                <th>Description</th>
+                <th>Datecreated</th>
+                <th>Dateobject</th>
+                <th>Color</th>
+                <th>Resolution</th>
+                <th>Externalurl</th>
+                <th>Copy</th>
+                <th>State</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mediaKsc in mediaKscs %}
+            <tr>
+                <td><a href="{{ path('image_show', { 'id': mediaKsc.id }) }}">{{ mediaKsc.id }}</a></td>
+                <td>{{ mediaKsc.name }}</td>
+                <td>{{ mediaKsc.subhead }}</td>
+                <td>{{ mediaKsc.type }}</td>
+                <td>{{ mediaKsc.format }}</td>
+                <td>{{ mediaKsc.size }}</td>
+                <td>{{ mediaKsc.duration }}</td>
+				
+                <td>
+					
+			
+				
+					<img src ="{{ asset ("/"~mediaKsc.url) | imagine_filter('ksc_thumb')}}"> 
+				</td>
+                <td>{{ mediaKsc.urlLd }}</td>
+                <td>{{ mediaKsc.urlThumb }}</td>
+                <td>{{ mediaKsc.tags }}</td>
+                <td>{{ mediaKsc.gallery }}</td>
+                <td>{{ mediaKsc.description }}</td>
+                <td>{% if mediaKsc.dateCreated %}{{ mediaKsc.dateCreated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if mediaKsc.dateObject %}{{ mediaKsc.dateObject|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ mediaKsc.color }}</td>
+                <td>{{ mediaKsc.resolution }}</td>
+                <td>{{ mediaKsc.externalUrl }}</td>
+                <td>{{ mediaKsc.copy }}</td>
+                <td>{{ mediaKsc.state }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('media_show', { 'id': mediaKsc.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('media_edit', { 'id': mediaKsc.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('media_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

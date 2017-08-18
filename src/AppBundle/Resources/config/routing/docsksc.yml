@@ -1,0 +1,20 @@
+docs_index:
+    path:     /
+    defaults: { _controller: "AppBundle:DocsKsc:index" }
+    methods:  GET
+
+docs_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:DocsKsc:show" }
+    methods:  GET
+
+docs_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:DocsKsc:new" }
+    methods:  [GET, POST]
+
+docs_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:DocsKsc:edit" }
+    methods:  [GET, POST]
+

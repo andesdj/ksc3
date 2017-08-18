@@ -1,0 +1,12 @@
+liip_imagine:
+    filter_sets:
+        ksc_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [320, 240], mode: outbound, allow_upscale: true }
+                
+                
+        ksc_web:
+            quality: 75
+            filters:
+                thumbnail: { size: [800, 600], mode: outbound, allow_upscale: true }        

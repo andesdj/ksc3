@@ -1,0 +1,29 @@
+AppBundle\Entity\LogKsc:
+    type: entity
+    table: log_ksc
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idUser:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: id_user
+        idMedia:
+            type: integer
+            nullable: true
+            unsigned: false
+            column: id_media
+        date:
+            type: datetime
+            nullable: true
+        state:
+            type: datetime
+            nullable: true
+    lifecycleCallbacks: {  }

@@ -1,0 +1,54 @@
+#Index All With pagination
+app_home:
+    path:     /
+    defaults: { _controller: AppBundle:AllMedia:index }
+    
+ #search Results   
+app_results:
+    path:     /results
+    defaults: { _controller: AppBundle:AllMedia:results }    
+    methods:  [GET, POST]
+
+image_index:
+    path:     /all
+    defaults: { _controller: AppBundle:AllMedia:index }
+    methods:  GET   
+
+#Image Routes
+app_Image:
+    resource: "@AppBundle/Resources/config/routing/imageksc.yml"
+    prefix:   /image
+#Video Routes
+app_video:
+    resource: "@AppBundle/Resources/config/routing/videoksc.yml"
+    prefix:   /video    
+
+#Docs Routes
+app_docs:
+    resource: "@AppBundle/Resources/config/routing/docsksc.yml"
+    prefix:   /docs
+
+
+
+#Login--
+login:
+    path:     /login
+    defaults: { _controller: AppBundle:User:login }
+ 
+login_check:
+    path: /login_check
+    
+logout:
+    path: /logout
+
+#PRuebas
+pruebas_index:
+    path:     /pruebas
+    defaults: { _controller: AppBundle:Pruebas:index }
+    methods:  GET   
+
+
+app_user:
+    resource: "@AppBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
