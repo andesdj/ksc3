@@ -5,7 +5,6 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
 class AllMediaController extends Controller
 {
     /**
@@ -13,6 +12,13 @@ class AllMediaController extends Controller
      */
     public function indexAction(Request $request)
     {
+		
+		$Menu=$this->get("app.menu")	;
+			
+		return $Menu->kscMenu();
+	die();
+	
+		
 		$a="";
 		 $em = $this->getDoctrine()->getManager();
 		 $dql = "SELECT e FROM AppBundle:MediaKsc e";
@@ -37,7 +43,9 @@ class AllMediaController extends Controller
         // replace this example code with whatever you need
         return $this->render('allmedia/index.html.twig',
 			array(
-				'pagination' => $pagination));
+				'pagination' => $pagination)
+				
+				);
 		
 		
     }
