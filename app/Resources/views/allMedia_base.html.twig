@@ -3,266 +3,185 @@
 <!--[if IE 7]>                  <html class="ie7 no-js" lang="en">     <![endif]-->
 <!--[if lte IE 8]>              <html class="ie8 no-js" lang="en">     <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html class="not-ie no-js" lang="en">  <!--<![endif]-->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <title>Home | Grousp | Astronaut Training Experience</title>
-    
-    <meta name="description" content="   ">
-    <meta name="author" content="   ">
-    
-	<!--Bootstrap<!-->
-	<link rel="stylesheet" href="{{ asset('assets/results/bootstrap/css/bootstrap.css') }}">
-	
-	<!--[if !lte IE 6]><!-->
-        <link rel="stylesheet" href="{{ asset('assets/results/css/style.css') }}" media="screen" />
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+		<title>Home | Grousp | Astronaut Training Experience</title>
+
+		<meta name="description" content="   ">
+		<meta name="author" content="   ">
+
+		<!--Bootstrap<!-->
+		<link rel="stylesheet" href="{{ asset('assets/results/bootstrap/css/bootstrap.css') }}">
+
+		<!--[if !lte IE 6]><!-->
+        <link rel="stylesheet" href="{{ asset('assets/results/css/style.css') }}" media="screen" />
         <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,600,300,800,700,400italic|PT+Serif:400,400italic" />
         <link rel="stylesheet" href="{{ asset('assets/results/css/fancybox.min.css') }}" media="screen" />
         <link rel="stylesheet" href="{{ asset('assets/results/css/video-js.min.css') }}" media="screen" />
         <link rel="stylesheet" href="{{ asset('assets/results/css/audioplayerv1.min.css') }}" media="screen" />
         <!--Font Awesome-->
         <link rel="stylesheet" href="{{ asset('assets/results/font-awesome-4.7.0/css/font-awesome.css') }}">
-        
         <!-- load css for cubeportfolio -->
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/results/cubeportfolio/css/cubeportfolio.css') }}">
+		<!-- HTML5 Shiv + detect touch events -->
+		<script src="{{ asset('assets/results/js/jquery.js') }}"></script>
+		<script src="{{ asset('assets/results/js/modernizr.custom.js') }}"></script>
+		<script src="{{ asset('assets/results/js/bootstrap.min.js') }}"></script>
 
-    <!-- HTML5 Shiv + detect touch events -->
-	<script src="{{ asset('assets/results/js/jquery.js') }}"></script>
-    <script src="{{ asset('assets/results/js/modernizr.custom.js') }}"></script>
-	<script src="{{ asset('assets/results/js/bootstrap.min.js') }}"></script>
-
-    <!-- HTML5 video player -->
-    <script src="{{ asset('assets/results/js/video.min.js') }}"></script>
-    <script>_V_.options.flash.swf = 'http://localhost/smartstart/js/video-js.swf';</script>
-    <!-- Login Dropdown Form -->
-
-    <script src="{{ asset('assets/results/js/login.js') }}"></script>
-    <script src="{{ asset('assets/results/js/jquery.js') }}"></script>
-    <script src="{{ asset('assets/results/js/ajax.js') }}"></script>
+		<!-- HTML5 video player -->
+		<script src="{{ asset('assets/results/js/video.min.js') }}"></script>
+		<script>_V_.options.flash.swf = 'http://localhost/smartstart/js/video-js.swf';</script>
+		<!-- Login Dropdown Form -->
+		<script src="{{ asset('assets/results/js/login.js') }}"></script>
+		<script src="{{ asset('assets/results/js/jquery.js') }}"></script>
+		<script src="{{ asset('assets/results/js/ajax.js') }}"></script>
     </head>
-<body>
+	<body>
+		
+		
+		<header id="header" class="container clearfix">
+			<a href="{{ path('app_home') }}" id="logo">
+				<img src="{{ asset('assets/results/img/logo.png')}}" alt="Kennedy Space Center" width="220px;">
+			</a>
+			<nav id="main-nav">
+				<ul>
+						{% for itemMenu in kscMenu %}
+							<li {%if itemMenu.id==1 %}class="current" {%endif%} >
+								<a href="#" data-description="{{itemMenu.name}}">{{itemMenu.name}}</a>
+									
+								
+							
+											<ul>
+														{% for itemsubMenu in kscsubMenu %}
+										{%if itemsubMenu.group.id==itemMenu.id %}
+										<li><a href="#">{{itemsubMenu.id}}  {{itemsubMenu.gallery}} </a></li>
+											{%endif%}
+										{%endfor%}	
+											</ul>
+								
+							
+							</li>
+							
+						{%endfor%}
+				</ul>
 
-<header id="header" class="container clearfix">
+			</nav><!-- end #main-nav -->
 
-    <a href="{{ path('app_home') }}" id="logo">
-        <img src="{{ asset('assets/results/img/logo.png')}}" alt="Kennedy Space Center" width="220px;">
-    </a>
-    <nav id="main-nav">
-        <ul>
-            <li class="current">
-                <a href="#" data-description="ATTRACTIONS, EDUCATION">OVERVIEW</a>
-                
-            </li>
-            <li>
-                <a href="#" data-description="Add-Ons & Upgrades">UPGRADES</a>
-                <ul>
-                    
-                    <li><a href="#">Add-Ons & Upgrades</a>
-                        <ul>
-                            <li><a href="#">Lunch with an Astronaut</a></li>
-                            <li><a href="#">KSC Special Interest Bus Tours</a></li>
-                            <li><a href="#">Cosmic Quest</a></li>
-                            <li><a href="#">KSC SmartGuide </a></li> 
-                            <li><a href="#">Photo Opportunities</a></li>
-                        </ul>
-                    </li>
-                    
-                </ul>
-            </li>
-            <li>
-                <a href="attractions.html" data-description=" ">ATTRACTIONS </a>
-                <ul>
-                    <li><a href="#">Heroes & Legends</a></li>
-                    <li><a href="#">Space Shuttle Atlantis®</a></li>
-                    <li><a href="#">Shuttle Launch Experience</a></li>
-                    <li><a href="#">Kennedy Space Center Bus Tour</a></li>
-                    <li><a href="#">Apollo/Saturn V Center </a></li>
-                    <li><a href="#">Journey to Mars: Explorers Wanted</a></li>
-                    <li><a href="#">Rocket Garden</a></li>
-                    <li><a href="#">IMAX® Theater</a></li>
-                    <li><a href="#">Astronaut Encounter</a></li>
-                    <li><a href="#">Science on a Sphere® in IMAX®</a></li>
-                    <li><a href="#">Eyes on the Universe</a>
-                        <ul>
-                            <li><a href="#">Astronaut Memorial</a></li>
-                            <li><a href="#">Other Shows and Attractions</a></li>
-                        </ul>
-                    </li>
-                    
-                </ul>
-            </li>
-            <li>
-                <a href="#" data-description="educational programs">GROUPS</a>
-                <ul>
-                    <li><a href="#">Space Explorers Adventure (SEA)</a></li>
-                    <li><a href="#">Salute to Science</a></li>
-                    <li><a href="#">Overnight Adventures Space Shuttle Atlantis® </a></li>
-                    <li><a href="#">Overnight Adventures Apollo/Saturn V Center</a></li>
-                    <li><a href="#">After Hours Adventure</a></li>
-                    <li><a href="#">Space Exploration Rocketry </a></li>
-                    <li><a href="#">Astronaut Training Experience (ATX®)</a></li>
-                    <li><a href="#">Family Astronaut Training Experience (ATX®)</a></li>
-                    <li><a href="#">Camp KSC® International</a></li>
-                    <li><a href="#">Camp KSC® International Advanced</a></li>
-                    <li><a href="#">Meal Options</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" data-description="Enquire here">INTERNATIONAL</a>
-                
-                <ul>
-                    <li><a href="#">Visitors Guides Folder </a></li>
-                    <li><a href="#">Camp KSC® International</a></li>
-                    <li><a href="#">Camp KSC® International Advanced</a></li>
-                    <li><a href="#">Camp KSC® International Policies</a></li>
-                    <li><a href="#">Camp KSC® International Reservation Form</a></li>
-                    <li><a href="#">KSC SmartGuide </a></li>
-                </ul>
-                    
-            </li>
-        </ul>
+		</header><!-- end #header -->
+		<section id="content" class="container clearfix">
+			<section class="boxsearch">
+				<form id="ui_element" class="sb_wrapper2" method="POST" action ="{{path('app_results')}}">
+					<p>
+						<span class="sb_down"></span>
+						<input class="sb_input2"  id="search" type="text"  name="kscSearch"/>
+						<button type="submit">search</button>
+					</p>
+					<ul class="sb_dropdown" style="display:none;">
+						<li class="sb_filter">Filter your search</li>
+						<li><input type="checkbox"/><label for="all"><strong>All Categories</strong></label></li>
+						<li><input type="checkbox"/><label for="imagesfile">Images</label></li>
+						<li><input type="checkbox"/><label for="videosfile">Videos </label></li>
+						<li><input type="checkbox"/><label for="pdffile">PDF Files</label></li>
+						<li><input type="checkbox"/><label for="wordfile">Word Files</label></li>
+						<li><input type="checkbox"/><label for="excelfile">Excel Files</label></li>
+						<li><input type="checkbox"/><label for="powerpointfile">Power Point Files </label></li>
+					</ul>
+				</form>
 
-    </nav><!-- end #main-nav -->
-    
-</header><!-- end #header -->
-<section id="content" class="container clearfix">
-  <section class="boxsearch">
-                    <form id="ui_element" class="sb_wrapper2" method="POST" action ="{{path('app_results')}}">
-                        <p>
-                            <span class="sb_down"></span>
-                            <input class="sb_input2"  id="search" type="text"  name="kscSearch"/>
-								<button type="submit">search</button>
-                        </p>
-                        <ul class="sb_dropdown" style="display:none;">
-                            <li class="sb_filter">Filter your search</li>
-                            <li><input type="checkbox"/><label for="all"><strong>All Categories</strong></label></li>
-                            <li><input type="checkbox"/><label for="imagesfile">Images</label></li>
-                            <li><input type="checkbox"/><label for="videosfile">Videos </label></li>
-                            <li><input type="checkbox"/><label for="pdffile">PDF Files</label></li>
-                            <li><input type="checkbox"/><label for="wordfile">Word Files</label></li>
-                            <li><input type="checkbox"/><label for="excelfile">Excel Files</label></li>
-                            <li><input type="checkbox"/><label for="powerpointfile">Power Point Files </label></li>
-                        </ul>
-                    </form>
-                    
-     </section> <!--End Box search-->
-     {% if app.user %}
-		 <a href="{{ path('logout') }}" id="loginButton">
-		<div id="loginContainer">
-			 <span>Logout</span><em></em>
-			 <div style="clear:none"></div>
-			 <div id="loginBox">                
-			 </div>
-			 </a>
-			 
-		 </div>
-	{%else %}
-     <aside class="dropdown-box">
-        <!-- Login Starts Here -->
-            <div id="loginContainer">
-                <a href="#" id="loginButton"><span>Login</span><em></em></a>
-                <div style="clear:none"></div>
-                <div id="loginBox">                
-                    <form id="loginForm" action="{{ path('login_check') }}" method="post" >
-                        <fieldset id="body">
-                            <fieldset>
-                                <label for="email">Email Address</label>
-                                <input type="text" autocomplete="off" name="_username" id="email"  />
-                            </fieldset>
-                            <fieldset>
-                                <label for="password">Password</label>
-                                <input type="password" name="_password" id="password" />
-                            </fieldset>
-                            <input type="submit" id="login" value="Log in" />
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-            <!-- Login Ends Here -->
-        
-     </aside> 
+			</section> <!--End Box search-->
+			{% if app.user %}
+				<a href="{{ path('logout') }}" id="loginButton">
+					<div id="loginContainer">
+						<span>Logout</span><em></em>
+						<div style="clear:none"></div>
+						<div id="loginBox">                
+						</div>
+				</a>
 
-						
-						{% endif %}
-						
-    <header class="page-header" >
-    
-        <h1 class="page-title" >Astronaut Training Experience</h1>
+			</div>
+		{%else %}
+			<aside class="dropdown-box">
+				<!-- Login Starts Here -->
+				<div id="loginContainer">
+					<a href="#" id="loginButton"><span>Login</span><em></em></a>
+					<div style="clear:none"></div>
+					<div id="loginBox">                
+						<form id="loginForm" action="{{ path('login_check') }}" method="post" >
+							<fieldset id="body">
+								<fieldset>
+									<label for="email">Email Address</label>
+									<input type="text" autocomplete="off" name="_username" id="email"  />
+								</fieldset>
+								<fieldset>
+									<label for="password">Password</label>
+									<input type="password" name="_password" id="password" />
+								</fieldset>
+								<input type="submit" id="login" value="Log in" />
+							</fieldset>
+						</form>
+					</div>
+				</div>
+				<!-- Login Ends Here -->
 
-    
-        
-    </header><!-- end .page-header -->
-    
+			</aside> 
+		{% endif %}
+
+		<header class="page-header" >
+
+			<h1 class="page-title" >Astronaut Training Experience</h1>
+		</header><!-- end .page-header -->
         <!-- masonrygrid - filter -->
-    <div id="js-filters-masonry-projects" class="cbp-l-filters-buttonCenter">
-        <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">
-            All <div class="cbp-filter-counter"></div>
-        </div>
-        <div data-filter=".images" class="cbp-filter-item">
-            <i class="fa fa-camera" style="color:#707070;"></i> &nbsp;Images <div class="cbp-filter-counter"></div>
-        </div>
-        <div data-filter=".videos" class="cbp-filter-item">
-            <i class="fa fa-file-video-o" style="color:#707070;"></i> &nbsp;Videos <div class="cbp-filter-counter"></div>
-        </div>
-        <div data-filter=".pdfs" class="cbp-filter-item">
-            <i class="fa fa-file-pdf-o" style="color:#707070;"></i> &nbsp;PDF <div class="cbp-filter-counter"></div>
-        </div>
-        <div data-filter=".words" class="cbp-filter-item">
-            <i class="fa fa-file-word-o" style="color:#707070;"></i> &nbsp;Word <div class="cbp-filter-counter"></div>
-        </div>
-        <div data-filter=".excel" class="cbp-filter-item">
-            <i class="fa fa-file-excel-o" style="color:#707070;"></i> &nbsp;Excel <div class="cbp-filter-counter"></div>
-        </div>
-        <div data-filter=".ppt" class="cbp-filter-item">
-            <i class="fa fa-file-powerpoint-o" style="color:#707070;"></i> &nbsp;PPT<div class="cbp-filter-counter"></div>
-        </div>
+		<div id="js-filters-masonry-projects" class="cbp-l-filters-buttonCenter">
+			<div data-filter="*" class="cbp-filter-item-active cbp-filter-item">
+				All <div class="cbp-filter-counter"></div>
+			</div>
+			<div data-filter=".images" class="cbp-filter-item">
+				<i class="fa fa-camera" style="color:#707070;"></i> &nbsp;Images <div class="cbp-filter-counter"></div>
+			</div>
+			<div data-filter=".videos" class="cbp-filter-item">
+				<i class="fa fa-file-video-o" style="color:#707070;"></i> &nbsp;Videos <div class="cbp-filter-counter"></div>
+			</div>
+			<div data-filter=".pdfs" class="cbp-filter-item">
+				<i class="fa fa-file-pdf-o" style="color:#707070;"></i> &nbsp;PDF <div class="cbp-filter-counter"></div>
+			</div>
+			<div data-filter=".words" class="cbp-filter-item">
+				<i class="fa fa-file-word-o" style="color:#707070;"></i> &nbsp;Word <div class="cbp-filter-counter"></div>
+			</div>
+			<div data-filter=".excel" class="cbp-filter-item">
+				<i class="fa fa-file-excel-o" style="color:#707070;"></i> &nbsp;Excel <div class="cbp-filter-counter"></div>
+			</div>
+			<div data-filter=".ppt" class="cbp-filter-item">
+				<i class="fa fa-file-powerpoint-o" style="color:#707070;"></i> &nbsp;PPT<div class="cbp-filter-counter"></div>
+			</div>
+		</div>
+		<!-- Cube Porfolio Grid -->
+
+
+
+		<!-- Start All cube items  Looping AMG -->
+		<div id="js-grid-masonry-projects" class="cbp cbp-l-grid-masonry-projects">
+			<div id="results">
+			{% block body %}{% endblock %}
+
+		</div>
+
+
+
+		<!-- cube items AMG -->
     </div>
-<!-- Cube Porfolio Grid -->
+	<!--   ^  -->
+	<!--   !  -->
 
-
-
-<!-- Start All cube items  Looping AMG -->
-    <div id="js-grid-masonry-projects" class="cbp cbp-l-grid-masonry-projects">
-
-
-
-    <div id="results">
-        
-
-
-
-
-  {% block body %}{% endblock %}
-        
-    </div>
-
-
-
-<!-- cube items AMG -->
-
-
-
-    </div>
-<!--   ^  -->
-<!--   !  -->
-
-<!-- end #portfolio-items new  -->
-<!-- ************************************************************************************************************** -->
-<!-- ************************************************************************************************************** -->
-<!-- end #portfolio-items  LOOPING AMG -->
-
-
-
+	<!-- end #portfolio-items new  -->
+	<!-- ************************************************************************************************************** -->
+	<!-- ************************************************************************************************************** -->
+	<!-- end #portfolio-items  LOOPING AMG -->
     <!-- Pagination Zone: Load More  / Loading-->
-      {% block pagination %}{% endblock %}
-    <!--Latest Images-->
-
-
-
-
+{% block pagination %}{% endblock %}
+<!--Latest Images-->
 
 </section><!-- end #content -->
 
@@ -281,7 +200,7 @@
                     <li><a href="portfolio-4-columns.html">Groups</a></li>
                     <li><a href="contact-us.html">International</a></li>
                 </ul>
-                
+
             </nav><!-- end #footer-nav -->
 
             <ul class="contact-info">
@@ -289,13 +208,10 @@
                 <li class="phone">(xxx) xxx xxx</li>
                 <li class="email"><a href="mailto:contact@name.com">info@xxxxx.com</a></li>
             </ul><!-- end .contact-info -->
-            
         </div><!-- end .three-fourth -->
-
         <div class="one-fourth last">
 
             <span class="title">Stay connected</span>
-
             <ul class="social-links">
                 <li class="twitter"><a href="#">Twitter</a></li>
                 <li class="facebook"><a href="#">Facebook</a></li>
@@ -304,17 +220,11 @@
                 <li class="youtube"><a href="#">YouTube</a></li>
                 <li class="skype"><a href="#">Skype</a></li>
             </ul><!-- end .social-links -->
-
         </div><!-- end .one-fourth.last -->
-        
     </div><!-- end .container -->
-
 </footer><!-- end #footer -->
-
 <footer id="footer-bottom" class="clearfix">
-
     <div class="container">
-
         <ul>
             <li>Kennedy Space Center Visitor Complex &copy; 2017</li>
             <li><a href="#">Legal Notice</a></li>
@@ -322,45 +232,44 @@
         </ul>
 
     </div><!-- end .container -->
-        <script type="text/javascript">
-            
-            $(function() {
-                var $ui =  document.getElementById("ui_element");
-               
-                /**
-                * on focus and on click display the dropdown, 
-                * and change the arrow image
-                */
-                $ui.find('.sb_input').bind('focus click',function(){
-                    $ui.find('.sb_down')
-                       .addClass('sb_up')
-                       .removeClass('sb_down')
-                       .andSelf()
-                       .find('.sb_dropdown')
-                       .show();
-                });
-                
-                /**
-                * on mouse leave hide the dropdown, 
-                * and change the arrow image
-                */
-                $ui.bind('mouseleave',function(){
-                    $ui.find('.sb_up')
-                       .addClass('sb_down')
-                       .removeClass('sb_up')
-                       .andSelf()
-                       .find('.sb_dropdown')
-                       .hide();
-                });
-                
-                /**
-                * selecting all checkboxes
-                */
-                $ui.find('.sb_dropdown').find('label[for="all"]').prev().bind('click',function(){
-                    $(this).parent().siblings().find(':checkbox').attr('checked',this.checked).attr('disabled',this.checked);
-                });
-            });
-        </script>   
+	<script type="text/javascript">
+
+			$(function () {
+				var $ui = document.getElementById("ui_element");
+
+				/**
+				 * on focus and on click display the dropdown, 
+				 * and change the arrow image
+				 */
+				$ui.find('.sb_input').bind('focus click', function () {
+					$ui.find('.sb_down')
+							.addClass('sb_up')
+							.removeClass('sb_down')
+							.andSelf()
+							.find('.sb_dropdown')
+							.show();
+				});
+				/**
+				 * on mouse leave hide the dropdown, 
+				 * and change the arrow image
+				 */
+				$ui.bind('mouseleave', function () {
+					$ui.find('.sb_up')
+							.addClass('sb_down')
+							.removeClass('sb_up')
+							.andSelf()
+							.find('.sb_dropdown')
+							.hide();
+				});
+
+				/**
+				 * selecting all checkboxes
+				 */
+				$ui.find('.sb_dropdown').find('label[for="all"]').prev().bind('click', function () {
+					$(this).parent().siblings().find(':checkbox').attr('checked', this.checked).attr('disabled', this.checked);
+				});
+			});
+	</script>   
     <script src="{{ asset('assets/results/js/respond.min.js') }}"></script>
     <script src="{{ asset('assets/results/js/jquery.easing-1.3.min.js') }}"></script>
     <script src="{{ asset('assets/results/js/jquery.fancybox.pack.js') }}"></script>
@@ -369,15 +278,11 @@
     <script src="{{ asset('assets/results/js/jquery.cycle.all.min.js') }}"></script>
     <script src="{{ asset('assets/results/js/jquery.isotope.min.js') }}"></script>
     <script src="{{ asset('assets/results/js/audioplayerv1.min.js') }}"></script>
-
     <script src="{{ asset('assets/results/js/jquery.touchSwipe.min.js') }}"></script>
     <script src="{{ asset('assets/results/js/custom.js') }}"></script>
-
-
-        
-        <!-- CUBE PORTFOLIO  -->
-        <script type="text/javascript" src="{{ asset('assets/results/cubeportfolio/js/jquery.cubeportfolio.js') }}"></script>
-        <!-- init cubeportfolio -->
-        <script type="text/javascript" src="{{ asset('assets/results/cubeportfolio/js/main.js') }}"></script>
+	<!-- CUBE PORTFOLIO  -->
+	<script type="text/javascript" src="{{ asset('assets/results/cubeportfolio/js/jquery.cubeportfolio.js') }}"></script>
+	<!-- init cubeportfolio -->
+	<script type="text/javascript" src="{{ asset('assets/results/cubeportfolio/js/main.js') }}"></script>
 </body>
 </html>

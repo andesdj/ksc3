@@ -12,14 +12,11 @@ class AllMediaController extends Controller
      */
     public function indexAction(Request $request)
     {
-		
-		$Menu=$this->get("app.menu")	;
-			
-		return $Menu->kscMenu();
-	die();
-	
-		
-		$a="";
+
+
+
+	//	$Menu=$this->get("app.menu")	;
+		 $a="";
 		 $em = $this->getDoctrine()->getManager();
 		 $dql = "SELECT e FROM AppBundle:MediaKsc e";
 		 $query = $em->createQuery($dql);
@@ -43,10 +40,15 @@ class AllMediaController extends Controller
         // replace this example code with whatever you need
         return $this->render('allmedia/index.html.twig',
 			array(
-				'pagination' => $pagination)
+				'pagination' => $pagination,
+				'kscMenu' => $this->get("app.menu")->KscMenu(),
+				'kscsubMenu' => $this->get("app.menu")->KscsubMenu(),
 				
-				);
-		
+				
+				)
+				
+		);
+
 		
     }
 	

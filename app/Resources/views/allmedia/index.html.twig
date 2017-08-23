@@ -5,6 +5,7 @@
 </div>
 
 
+
 	{% for mediaKsc in pagination %}
 	
 	{% if mediaKsc.type=="Document"%}{% set classKSC= mediaKsc.format %}{%else%}{%set classKSC=   mediaKsc.type %}{%endif%}
@@ -18,6 +19,7 @@
 					<div class="cbp-l-caption-body">
 						{% if  mediaKsc.type=="images" %}
 						<p>
+							
 						<a href="{{ asset ("/"~mediaKsc.url) | imagine_filter('ksc_web')}}"  onMouseMove="window.status = '';" onMouseOut="window.status = '';" class="cbp-lightbox cbp-l-caption-buttonRight-lightbox" data-title="Dashboard<br>by ">
 						<i class="fa fa-arrows" style="color:#fff;"></i> | View Image larger </a>
 						</p>

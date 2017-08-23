@@ -1,0 +1,19 @@
+<?php
+
+namespace AppBundle\Services;
+class Menu {
+	protected $em;
+
+	public function __construct(\Doctrine\ORM\EntityManager $em) {
+		$this->em = $em;
+	}
+	public function KscMenu() {
+		//return $kscMenu = $this->em->getRepository('AppBundle:GalleryKsc')->findBy(array('status'=>'1'));
+		// return $kscMenu = $this->em->getRepository('AppBundle:GalleryKsc')->findAll();
+		return $kscMenu = $this->em->getRepository('AppBundle:GalleryKsc')->findBy(array('status' => '1'));
+
+	}
+	public function submenu() {
+		return $kscMenu = $this->em->getRepository('AppBundle:GalleryKsc')->findBy(array('status' => '1'));
+	}
+}
