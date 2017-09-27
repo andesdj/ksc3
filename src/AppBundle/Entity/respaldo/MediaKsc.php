@@ -2,6 +2,9 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -87,30 +90,16 @@ class MediaKsc
     /**
      * @var string
      *
-     * @ORM\Column(name="tags", type="string", length=50, nullable=false)
+     * @ORM\Column(name="tags", type="string", length=255, nullable=false)
      */
     private $tags;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="group", type="integer", nullable=false)
-     */
-    private $group;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="gallery", type="integer", nullable=false)
+     * @ORM\Column(name="gallery", type="string", length=255, nullable=false)
      */
     private $gallery;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="subgallery", type="integer", nullable=false)
-     */
-    private $subgallery;
 
     /**
      * @var string
@@ -166,7 +155,7 @@ class MediaKsc
      *
      * @ORM\Column(name="state", type="string", length=30, nullable=false)
      */
-    private $state;
+    private $state = '1';
 
     /**
      * @var \User
@@ -183,7 +172,7 @@ class MediaKsc
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -194,19 +183,20 @@ class MediaKsc
      * Set name
      *
      * @param string $name
+     *
      * @return MediaKsc
      */
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -217,19 +207,20 @@ class MediaKsc
      * Set subhead
      *
      * @param string $subhead
+     *
      * @return MediaKsc
      */
     public function setSubhead($subhead)
     {
         $this->subhead = $subhead;
-    
+
         return $this;
     }
 
     /**
      * Get subhead
      *
-     * @return string 
+     * @return string
      */
     public function getSubhead()
     {
@@ -240,19 +231,20 @@ class MediaKsc
      * Set type
      *
      * @param string $type
+     *
      * @return MediaKsc
      */
     public function setType($type)
     {
         $this->type = $type;
-    
+
         return $this;
     }
 
     /**
      * Get type
      *
-     * @return string 
+     * @return string
      */
     public function getType()
     {
@@ -263,19 +255,20 @@ class MediaKsc
      * Set format
      *
      * @param string $format
+     *
      * @return MediaKsc
      */
     public function setFormat($format)
     {
         $this->format = $format;
-    
+
         return $this;
     }
 
     /**
      * Get format
      *
-     * @return string 
+     * @return string
      */
     public function getFormat()
     {
@@ -286,19 +279,20 @@ class MediaKsc
      * Set size
      *
      * @param string $size
+     *
      * @return MediaKsc
      */
     public function setSize($size)
     {
         $this->size = $size;
-    
+
         return $this;
     }
 
     /**
      * Get size
      *
-     * @return string 
+     * @return string
      */
     public function getSize()
     {
@@ -309,19 +303,20 @@ class MediaKsc
      * Set duration
      *
      * @param string $duration
+     *
      * @return MediaKsc
      */
     public function setDuration($duration)
     {
         $this->duration = $duration;
-    
+
         return $this;
     }
 
     /**
      * Get duration
      *
-     * @return string 
+     * @return string
      */
     public function getDuration()
     {
@@ -332,19 +327,20 @@ class MediaKsc
      * Set url
      *
      * @param string $url
+     *
      * @return MediaKsc
      */
     public function setUrl($url)
     {
         $this->url = $url;
-    
+
         return $this;
     }
 
     /**
      * Get url
      *
-     * @return string 
+     * @return string
      */
     public function getUrl()
     {
@@ -355,19 +351,20 @@ class MediaKsc
      * Set urlLd
      *
      * @param string $urlLd
+     *
      * @return MediaKsc
      */
     public function setUrlLd($urlLd)
     {
         $this->urlLd = $urlLd;
-    
+
         return $this;
     }
 
     /**
      * Get urlLd
      *
-     * @return string 
+     * @return string
      */
     public function getUrlLd()
     {
@@ -378,19 +375,20 @@ class MediaKsc
      * Set urlThumb
      *
      * @param string $urlThumb
+     *
      * @return MediaKsc
      */
     public function setUrlThumb($urlThumb)
     {
         $this->urlThumb = $urlThumb;
-    
+
         return $this;
     }
 
     /**
      * Get urlThumb
      *
-     * @return string 
+     * @return string
      */
     public function getUrlThumb()
     {
@@ -401,19 +399,20 @@ class MediaKsc
      * Set tags
      *
      * @param string $tags
+     *
      * @return MediaKsc
      */
     public function setTags($tags)
     {
         $this->tags = $tags;
-    
+
         return $this;
     }
 
     /**
      * Get tags
      *
-     * @return string 
+     * @return string
      */
     public function getTags()
     {
@@ -421,45 +420,23 @@ class MediaKsc
     }
 
     /**
-     * Set group
-     *
-     * @param integer $group
-     * @return MediaKsc
-     */
-    public function setGroup($group)
-    {
-        $this->group = $group;
-    
-        return $this;
-    }
-
-    /**
-     * Get group
-     *
-     * @return integer 
-     */
-    public function getGroup()
-    {
-        return $this->group;
-    }
-
-    /**
      * Set gallery
      *
-     * @param integer $gallery
+     * @param string $gallery
+     *
      * @return MediaKsc
      */
     public function setGallery($gallery)
     {
         $this->gallery = $gallery;
-    
+
         return $this;
     }
 
     /**
      * Get gallery
      *
-     * @return integer 
+     * @return string
      */
     public function getGallery()
     {
@@ -467,45 +444,23 @@ class MediaKsc
     }
 
     /**
-     * Set subgallery
-     *
-     * @param integer $subgallery
-     * @return MediaKsc
-     */
-    public function setSubgallery($subgallery)
-    {
-        $this->subgallery = $subgallery;
-    
-        return $this;
-    }
-
-    /**
-     * Get subgallery
-     *
-     * @return integer 
-     */
-    public function getSubgallery()
-    {
-        return $this->subgallery;
-    }
-
-    /**
      * Set description
      *
      * @param string $description
+     *
      * @return MediaKsc
      */
     public function setDescription($description)
     {
         $this->description = $description;
-    
+
         return $this;
     }
 
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -516,19 +471,20 @@ class MediaKsc
      * Set dateCreated
      *
      * @param \DateTime $dateCreated
+     *
      * @return MediaKsc
      */
     public function setDateCreated($dateCreated)
     {
         $this->dateCreated = $dateCreated;
-    
+
         return $this;
     }
 
     /**
      * Get dateCreated
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateCreated()
     {
@@ -539,19 +495,20 @@ class MediaKsc
      * Set dateObject
      *
      * @param \DateTime $dateObject
+     *
      * @return MediaKsc
      */
     public function setDateObject($dateObject)
     {
         $this->dateObject = $dateObject;
-    
+
         return $this;
     }
 
     /**
      * Get dateObject
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateObject()
     {
@@ -562,19 +519,20 @@ class MediaKsc
      * Set color
      *
      * @param string $color
+     *
      * @return MediaKsc
      */
     public function setColor($color)
     {
         $this->color = $color;
-    
+
         return $this;
     }
 
     /**
      * Get color
      *
-     * @return string 
+     * @return string
      */
     public function getColor()
     {
@@ -585,21 +543,22 @@ class MediaKsc
      * Set resolution
      *
      * @param integer $resolution
+     *
      * @return MediaKsc
      */
     public function setResolution($resolution)
     {
         $this->resolution = $resolution;
-    
+
         return $this;
     }
 
     /**
      * Get resolution
      *
-     * @return integer 
+     * @return integer
      */
-    public function getResolution()
+public function getResolution()
     {
         return $this->resolution;
     }
@@ -608,19 +567,20 @@ class MediaKsc
      * Set externalUrl
      *
      * @param string $externalUrl
+     *
      * @return MediaKsc
      */
     public function setExternalUrl($externalUrl)
     {
         $this->externalUrl = $externalUrl;
-    
+
         return $this;
     }
 
     /**
      * Get externalUrl
      *
-     * @return string 
+     * @return string
      */
     public function getExternalUrl()
     {
@@ -631,19 +591,20 @@ class MediaKsc
      * Set copy
      *
      * @param string $copy
+     *
      * @return MediaKsc
      */
     public function setCopy($copy)
     {
         $this->copy = $copy;
-    
+
         return $this;
     }
 
     /**
      * Get copy
      *
-     * @return string 
+     * @return string
      */
     public function getCopy()
     {
@@ -654,19 +615,20 @@ class MediaKsc
      * Set state
      *
      * @param string $state
+     *
      * @return MediaKsc
      */
     public function setState($state)
     {
         $this->state = $state;
-    
+
         return $this;
     }
 
     /**
      * Get state
      *
-     * @return string 
+     * @return string
      */
     public function getState()
     {
@@ -677,22 +639,32 @@ class MediaKsc
      * Set idUser
      *
      * @param \AppBundle\Entity\User $idUser
+     *
      * @return MediaKsc
      */
     public function setIdUser(\AppBundle\Entity\User $idUser = null)
     {
         $this->idUser = $idUser;
-    
+
         return $this;
     }
 
     /**
      * Get idUser
      *
-     * @return \AppBundle\Entity\User 
+     * @return \AppBundle\Entity\User
      */
     public function getIdUser()
     {
         return $this->idUser;
     }
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

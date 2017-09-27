@@ -28,8 +28,6 @@ app_docs:
     resource: "@AppBundle/Resources/config/routing/docsksc.yml"
     prefix:   /docs
 
-
-
 #Login--
 login:
     path:     /login
@@ -53,3 +51,17 @@ app_user:
     resource: "@AppBundle/Resources/config/routing/user.yml"
     prefix:   /user
 
+group_results:
+    path:     /group/{id}
+    defaults: { _controller: AppBundle:AllMedia:group }
+    methods:  GET   
+
+gallery_results:
+    path:     /album/{id}
+    defaults: { _controller: AppBundle:AllMedia:gallery }
+    methods:  GET
+
+subgallery_results:
+    path:     /subgallery/{id}
+    defaults: { _controller: AppBundle:AllMedia:subgallery }
+    methods:  GET     

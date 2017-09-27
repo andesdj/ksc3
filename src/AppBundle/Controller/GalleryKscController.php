@@ -23,9 +23,7 @@ class GalleryKscController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $galleryKscs = $em->getRepository('AppBundle:GalleryKsc')->findAll();
-
         return $this->render('galleryksc/index.html.twig', array(
             'galleryKscs' => $galleryKscs,
         ));

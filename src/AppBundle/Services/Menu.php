@@ -16,4 +16,11 @@ class Menu {
     public function KscMenu() {
         return $kscMenu = $this->em->getRepository('AppBundle:GroupsKsc')->findBy(array('status'=>'1'));
     }
+	
+	
+   public function KscSublevel() {
+        return $kscsublevel = $this->em->getRepository('AppBundle:SubgalleryKsc')->findBy(array('status'=>'1'));
+    }
+
+	
 }

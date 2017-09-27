@@ -29,7 +29,7 @@
 				<ul class="check">
 					<li>Color:   {{ mediaKsc.color }}</li>
 					<li>Format: 	{{ mediaKsc.format }}</li>
-					<li>Gallery: 	{{ mediaKsc.gallery.gallery }}</li>
+					<li>Gallery: 	{{ mediaKsc.gallery }}</li>
 					<li id="res_img"> Resolution:  
 						{% if  mediaKsc.resolution=="1" %} Low Resolution  {%endif %} 
 						{% if  mediaKsc.resolution=="2" %} Medium Resolution  {%endif %} 
@@ -84,7 +84,7 @@
 				<ul class="check">
 					<li>Duration:   {{ mediaKsc.duration }}</li>
 					<li>Format: 	{{ mediaKsc.format }}</li>
-					<li>Gallery: 	{{ mediaKsc.gallery.gallery }}</li>
+					<li>Gallery: 	{{ mediaKsc.gallery }}</li>
 					<li id="res_img">  Resolution:
 						{% if  mediaKsc.resolution=="1" %} Low Resolution  {%endif %} 
 						{% if  mediaKsc.resolution=="2" %} Medium Resolution  {%endif %} 
@@ -135,7 +135,7 @@
 					<ul class="check">
 						<li>Duration:   {{ mediaKsc.duration }}</li>
 						<li>Format: 	{{ mediaKsc.format }}</li>
-						<li>Gallery: 	{{ mediaKsc.gallery.gallery }}</li>
+						<li>Gallery: 	{{ mediaKsc.gallery }}</li>
 						<li id="res_img">  Resolution:
 							{% if  mediaKsc.resolution=="1" %} Low Resolution  {%endif %} 
 							{% if  mediaKsc.resolution=="2" %} Medium Resolution  {%endif %} 

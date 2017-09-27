@@ -6,49 +6,33 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * LogKsc
- *
- * @ORM\Table(name="log_ksc")
- * @ORM\Entity
  */
 class LogKsc
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id_user", type="integer", nullable=true)
      */
     private $idUser;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id_media", type="integer", nullable=true)
      */
     private $idMedia;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="date", type="datetime", nullable=true)
      */
     private $date;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="state", type="datetime", nullable=true)
      */
     private $state;
-
 
 
     /**

@@ -6,56 +6,38 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * GalleryKsc
- *
- * @ORM\Table(name="gallery_ksc")
- * @ORM\Entity
  */
 class GalleryKsc
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="initial", type="string", length=50, nullable=false)
      */
     private $initial;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="group", type="integer", nullable=false)
-     */
-    private $group;
-
-    /**
      * @var string
-     *
-     * @ORM\Column(name="gallery", type="string", length=255, nullable=false)
      */
     private $gallery;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="description", type="string", length=255, nullable=false)
      */
     private $description;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="status", type="string", length=2, nullable=false)
      */
     private $status;
 
+    /**
+     * @var \AppBundle\Entity\GroupsKsc
+     */
+    private $group;
 
 
     /**
@@ -77,7 +59,7 @@ class GalleryKsc
     public function setInitial($initial)
     {
         $this->initial = $initial;
-    
+
         return $this;
     }
 
@@ -92,29 +74,6 @@ class GalleryKsc
     }
 
     /**
-     * Set group
-     *
-     * @param integer $group
-     * @return GalleryKsc
-     */
-    public function setGroup($group)
-    {
-        $this->group = $group;
-    
-        return $this;
-    }
-
-    /**
-     * Get group
-     *
-     * @return integer 
-     */
-    public function getGroup()
-    {
-        return $this->group;
-    }
-
-    /**
      * Set gallery
      *
      * @param string $gallery
@@ -123,7 +82,7 @@ class GalleryKsc
     public function setGallery($gallery)
     {
         $this->gallery = $gallery;
-    
+
         return $this;
     }
 
@@ -146,7 +105,7 @@ class GalleryKsc
     public function setDescription($description)
     {
         $this->description = $description;
-    
+
         return $this;
     }
 
@@ -169,7 +128,7 @@ class GalleryKsc
     public function setStatus($status)
     {
         $this->status = $status;
-    
+
         return $this;
     }
 
@@ -181,5 +140,28 @@ class GalleryKsc
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set group
+     *
+     * @param \AppBundle\Entity\GroupsKsc $group
+     * @return GalleryKsc
+     */
+    public function setGroup(\AppBundle\Entity\GroupsKsc $group = null)
+    {
+        $this->group = $group;
+
+        return $this;
+    }
+
+    /**
+     * Get group
+     *
+     * @return \AppBundle\Entity\GroupsKsc 
+     */
+    public function getGroup()
+    {
+        return $this->group;
     }
 }

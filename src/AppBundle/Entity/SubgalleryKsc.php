@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * GalleryKsc
+ * SubgalleryKsc
  *
- * @ORM\Table(name="gallery_ksc")
+ * @ORM\Table(name="subgallery_ksc")
  * @ORM\Entity
  */
-class GalleryKsc
+class SubgalleryKsc
 {
     /**
      * @var integer
@@ -22,6 +22,13 @@ class GalleryKsc
     private $id;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="gallery", type="integer", nullable=false)
+     */
+    private $gallery;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="initial", type="string", length=50, nullable=false)
@@ -29,18 +36,11 @@ class GalleryKsc
     private $initial;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="group", type="integer", nullable=false)
-     */
-    private $group;
-
-    /**
      * @var string
      *
-     * @ORM\Column(name="gallery", type="string", length=255, nullable=false)
+     * @ORM\Column(name="subgallery", type="string", length=255, nullable=false)
      */
-    private $gallery;
+    private $subgallery;
 
     /**
      * @var string
@@ -50,9 +50,9 @@ class GalleryKsc
     private $description;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="status", type="string", length=2, nullable=false)
+     * @ORM\Column(name="status", type="integer", nullable=false)
      */
     private $status;
 
@@ -69,10 +69,33 @@ class GalleryKsc
     }
 
     /**
+     * Set gallery
+     *
+     * @param integer $gallery
+     * @return SubgalleryKsc
+     */
+    public function setGallery($gallery)
+    {
+        $this->gallery = $gallery;
+    
+        return $this;
+    }
+
+    /**
+     * Get gallery
+     *
+     * @return integer 
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
+    }
+
+    /**
      * Set initial
      *
      * @param string $initial
-     * @return GalleryKsc
+     * @return SubgalleryKsc
      */
     public function setInitial($initial)
     {
@@ -92,56 +115,33 @@ class GalleryKsc
     }
 
     /**
-     * Set group
+     * Set subgallery
      *
-     * @param integer $group
-     * @return GalleryKsc
+     * @param string $subgallery
+     * @return SubgalleryKsc
      */
-    public function setGroup($group)
+    public function setSubgallery($subgallery)
     {
-        $this->group = $group;
+        $this->subgallery = $subgallery;
     
         return $this;
     }
 
     /**
-     * Get group
-     *
-     * @return integer 
-     */
-    public function getGroup()
-    {
-        return $this->group;
-    }
-
-    /**
-     * Set gallery
-     *
-     * @param string $gallery
-     * @return GalleryKsc
-     */
-    public function setGallery($gallery)
-    {
-        $this->gallery = $gallery;
-    
-        return $this;
-    }
-
-    /**
-     * Get gallery
+     * Get subgallery
      *
      * @return string 
      */
-    public function getGallery()
+    public function getSubgallery()
     {
-        return $this->gallery;
+        return $this->subgallery;
     }
 
     /**
      * Set description
      *
      * @param string $description
-     * @return GalleryKsc
+     * @return SubgalleryKsc
      */
     public function setDescription($description)
     {
@@ -163,8 +163,8 @@ class GalleryKsc
     /**
      * Set status
      *
-     * @param string $status
-     * @return GalleryKsc
+     * @param integer $status
+     * @return SubgalleryKsc
      */
     public function setStatus($status)
     {
@@ -176,7 +176,7 @@ class GalleryKsc
     /**
      * Get status
      *
-     * @return string 
+     * @return integer 
      */
     public function getStatus()
     {

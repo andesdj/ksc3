@@ -40,36 +40,37 @@
 		<script src="{{ asset('assets/results/js/ajax.js') }}"></script>
     </head>
 	<body>
-		
-		
+
 		<header id="header" class="container clearfix">
 			<a href="{{ path('app_home') }}" id="logo">
 				<img src="{{ asset('assets/results/img/logo.png')}}" alt="Kennedy Space Center" width="220px;">
 			</a>
 			<nav id="main-nav">
 				<ul>
-						{% for itemMenu in kscMenu %}
-							<li {%if itemMenu.id==1 %}class="current" {%endif%} >
-								<a href="#" data-description="{{itemMenu.name}}">{{itemMenu.name}}</a>
-									
-								
-							
-											<ul>
-														{% for itemsubMenu in kscsubMenu %}
-										{%if itemsubMenu.group.id==itemMenu.id %}
-										<li><a href="#">{{itemsubMenu.id}}  {{itemsubMenu.gallery}} </a></li>
+					{% for itemMenu in kscMenu %}
+						<li {%if itemMenu.id==1 %}class="current" {%endif%} >
+							<a href="#" data-description="{{itemMenu.name}}">{{itemMenu.name}}</a>
+								<ul>
+								{% for itemsubMenu in kscsubMenu %}
+									{%if itemsubMenu.group==itemMenu.id %}
+										<li><a href="#">{{itemsubMenu.gallery}} </a>
+										{%endif%}
+
+									<ul>
+										{% for itemsubLevel in kscsubLevel %}
+											{%if itemsubLevel.gallery==itemsubMenu.id %}
+											<li><a href="#">  {{itemsubLevel.subgallery}} </a></li>
 											{%endif%}
 										{%endfor%}	
-											</ul>
-								
-							
-							</li>
-							
-						{%endfor%}
+									</ul>	
+
+									</li>
+								{%endfor%}	
+							</ul>
+						</li>
+					{%endfor%}
 				</ul>
-
 			</nav><!-- end #main-nav -->
-
 		</header><!-- end #header -->
 		<section id="content" class="container clearfix">
 			<section class="boxsearch">

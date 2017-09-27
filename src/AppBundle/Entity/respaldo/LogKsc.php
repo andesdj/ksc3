@@ -54,7 +54,7 @@ class LogKsc
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -65,19 +65,20 @@ class LogKsc
      * Set idUser
      *
      * @param integer $idUser
+     *
      * @return LogKsc
      */
     public function setIdUser($idUser)
     {
         $this->idUser = $idUser;
-    
+
         return $this;
     }
 
     /**
      * Get idUser
      *
-     * @return integer 
+     * @return integer
      */
     public function getIdUser()
     {
@@ -88,19 +89,20 @@ class LogKsc
      * Set idMedia
      *
      * @param integer $idMedia
+     *
      * @return LogKsc
      */
     public function setIdMedia($idMedia)
     {
         $this->idMedia = $idMedia;
-    
+
         return $this;
     }
 
     /**
      * Get idMedia
      *
-     * @return integer 
+     * @return integer
      */
     public function getIdMedia()
     {
@@ -111,19 +113,20 @@ class LogKsc
      * Set date
      *
      * @param \DateTime $date
+     *
      * @return LogKsc
      */
     public function setDate($date)
     {
         $this->date = $date;
-    
+
         return $this;
     }
 
     /**
      * Get date
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDate()
     {
@@ -134,19 +137,20 @@ class LogKsc
      * Set state
      *
      * @param \DateTime $state
+     *
      * @return LogKsc
      */
     public function setState($state)
     {
         $this->state = $state;
-    
+
         return $this;
     }
 
     /**
      * Get state
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getState()
     {

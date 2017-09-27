@@ -1,5 +1,7 @@
 {% extends 'allMedia_base.html.twig' %}
+
 {% block body %}
+
 	<div class="cbp-item" >
  {#{ pagination.getTotalItemCount }#}
 </div>
@@ -37,7 +39,6 @@
 							{% if  mediaKsc.format!="pdfs" %}
 								<p><a href="{{asset (mediaKsc.urlLd)}}"  download="{{mediaKsc.name}}_KSCFile" class=" cbp-l-caption-buttonLeft" rel="nofollow">
 								<i class="fa fa-arrow-circle-down" style="color:#fff;"></i> | Download Document.</a></p>
-								
 								
 							{% endif %}		
 

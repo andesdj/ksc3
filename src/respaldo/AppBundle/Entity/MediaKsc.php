@@ -6,178 +6,113 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * MediaKsc
- *
- * @ORM\Table(name="media_ksc", indexes={@ORM\Index(name="FK1_user", columns={"id_user"})})
- * @ORM\Entity
  */
 class MediaKsc
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=30, nullable=false)
      */
     private $name;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="subhead", type="string", length=255, nullable=false)
      */
     private $subhead;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=20, nullable=false)
      */
     private $type;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="format", type="string", length=30, nullable=false)
      */
     private $format;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="size", type="string", length=100, nullable=false)
      */
     private $size;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="duration", type="string", length=100, nullable=false)
      */
     private $duration;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="url", type="string", length=255, nullable=false)
      */
     private $url;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="url_LD", type="string", length=255, nullable=false)
      */
     private $urlLd;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="url_thumb", type="string", length=255, nullable=false)
      */
     private $urlThumb;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="tags", type="string", length=50, nullable=false)
      */
     private $tags;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="group", type="integer", nullable=false)
-     */
-    private $group;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="gallery", type="integer", nullable=false)
+     * @var string
      */
     private $gallery;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="subgallery", type="integer", nullable=false)
-     */
-    private $subgallery;
-
-    /**
      * @var string
-     *
-     * @ORM\Column(name="description", type="text", nullable=false)
      */
     private $description;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="date_created", type="date", nullable=false)
      */
     private $dateCreated;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="date_object", type="date", nullable=false)
      */
     private $dateObject;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="color", type="string", length=10, nullable=false)
      */
     private $color;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="resolution", type="integer", nullable=true)
      */
     private $resolution;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="external_url", type="string", length=255, nullable=true)
      */
     private $externalUrl;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="copy", type="string", length=255, nullable=false)
      */
     private $copy;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="state", type="string", length=30, nullable=false)
      */
     private $state;
 
     /**
-     * @var \User
-     *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
-     * })
+     * @var \AppBundle\Entity\User
      */
     private $idUser;
-
 
 
     /**
@@ -421,32 +356,9 @@ class MediaKsc
     }
 
     /**
-     * Set group
-     *
-     * @param integer $group
-     * @return MediaKsc
-     */
-    public function setGroup($group)
-    {
-        $this->group = $group;
-    
-        return $this;
-    }
-
-    /**
-     * Get group
-     *
-     * @return integer 
-     */
-    public function getGroup()
-    {
-        return $this->group;
-    }
-
-    /**
      * Set gallery
      *
-     * @param integer $gallery
+     * @param string $gallery
      * @return MediaKsc
      */
     public function setGallery($gallery)
@@ -459,34 +371,11 @@ class MediaKsc
     /**
      * Get gallery
      *
-     * @return integer 
+     * @return string 
      */
     public function getGallery()
     {
         return $this->gallery;
-    }
-
-    /**
-     * Set subgallery
-     *
-     * @param integer $subgallery
-     * @return MediaKsc
-     */
-    public function setSubgallery($subgallery)
-    {
-        $this->subgallery = $subgallery;
-    
-        return $this;
-    }
-
-    /**
-     * Get subgallery
-     *
-     * @return integer 
-     */
-    public function getSubgallery()
-    {
-        return $this->subgallery;
     }
 
     /**
